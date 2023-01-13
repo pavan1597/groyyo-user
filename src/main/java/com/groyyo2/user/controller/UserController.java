@@ -1,12 +1,12 @@
-package com.groyyo.user.controller;
+package com.groyyo2.user.controller;
 
 
 import java.util.List;
 
-import com.groyyo.user.model.Users;
-import com.groyyo.user.model.UserDTO;
-import com.groyyo.user.model.UserRequest;
-import com.groyyo.user.service.UserService;
+import com.groyyo2.user.model.Users;
+import com.groyyo2.user.model.UserDTO;
+import com.groyyo2.user.model.UserRequest;
+import com.groyyo2.user.service.UserService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -31,8 +31,8 @@ public class UserController {
 
 
       @PostMapping
-      public Users createUser(@RequestBody UserRequest userRequest) {
-         return userService.createUser(userRequest);
+      public void createUser(@RequestBody UserRequest userRequest) {
+          userService.createUser(userRequest);
       }
 
       @PutMapping("/{id}")

@@ -1,4 +1,4 @@
-package com.groyyo.user.config;
+package com.groyyo2.user.config;
 
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
@@ -18,7 +18,7 @@ public class SwaggerConfig {
    public Docket api() {
       return new Docket(DocumentationType.SWAGGER_2)
             .select()
-            .apis(RequestHandlerSelectors.basePackage("com.groyyo.user"))
+            .apis(RequestHandlerSelectors.basePackage("com.groyyo2.user"))
             .paths(PathSelectors.any())
             .build();
    }

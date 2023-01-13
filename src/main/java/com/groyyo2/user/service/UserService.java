@@ -1,20 +1,28 @@
-package com.groyyo.user.service;
+package com.groyyo2.user.service;
 
-import com.groyyo.user.model.Users;
-import com.groyyo.user.model.UserDTO;
-import com.groyyo.user.model.UserRepository;
-import com.groyyo.user.model.UserRequest;
+import com.groyyo2.user.model.Users;
+import com.groyyo2.user.model.UserDTO;
+import com.groyyo2.user.model.UserRepository;
+import com.groyyo2.user.model.UserRequest;
+import com.groyyo2.user.producer.NotificationProducer;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
 
+
+
+
 @Service
+@Slf4j
 public class UserService {
 
-
+    @Value("${kafka.topic.usermgt_message}")
+    private String slackMessageTopic;
     @Autowired
     private UserRepository userRepository;
 
@@ -22,15 +30,24 @@ public class UserService {
         return userRepository.findAll();
     }
 
-    public Users createUser(UserRequest userRequest) {
-        Users users = Users.builder().
-                firstName(userRequest.getFirstName()).
-                fullName(userRequest.getFullName()).
-                emailId(userRequest.getEmailId()).
-                phone(userRequest.getPhone()).build();
-        return userRepository.save(users);
-    }
 
+    @Autowired
+    private NotificationProducer notificationProducer ;
+
+
+    public void createUser(UserRequest userRequest) {
+
+
+        notificationProducer.publish("user-service-2", userRequest.getEmailId(), userRequest);
+//        Users users = Users.builder().
+//                firstName(userRequest.getFirstName()).
+//                fullName(userRequest.getFullName()).
+//                emailId(userRequest.getEmailId()).
+//                phone(userRequest.getPhone()).build();
+
+        log.info("messages p[roduced to kafka ");
+//
+    }
 
     //multi- tennant
 //    private User createUser(String schema, String name) {

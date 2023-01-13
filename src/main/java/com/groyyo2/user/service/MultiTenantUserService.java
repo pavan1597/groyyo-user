@@ -1,10 +1,10 @@
-package com.groyyo.user.service;
+package com.groyyo2.user.service;
 
 
-import com.groyyo.user.config.TenantIdentifierResolver;
-import com.groyyo.user.model.Users;
-import com.groyyo.user.model.UserRepository;
-import com.groyyo.user.model.UserRequest;
+import com.groyyo2.user.config.TenantIdentifierResolver;
+import com.groyyo2.user.model.Users;
+import com.groyyo2.user.model.UserRepository;
+import com.groyyo2.user.model.UserRequest;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.transaction.support.TransactionTemplate;
 
@@ -18,7 +18,8 @@ import org.springframework.transaction.support.TransactionTemplate;
 
 	@Autowired TransactionTemplate txTemplate;
 
-	@Autowired TenantIdentifierResolver currentTenant;
+	@Autowired
+	TenantIdentifierResolver currentTenant;
 
 
 

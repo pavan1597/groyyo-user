@@ -1,4 +1,4 @@
-package com.groyyo.user.model;
+package com.groyyo2.user.model;
 
 import lombok.*;
 

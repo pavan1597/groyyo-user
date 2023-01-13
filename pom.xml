@@ -8,7 +8,7 @@
       <version>2.2.0.RELEASE</version>
       <relativePath/> <!-- lookup parent from repository -->
    </parent>
-   <groupId>com.groyyo</groupId>
+   <groupId>com.groyyo2</groupId>
    <artifactId>users</artifactId>
    <version>0.0.1-SNAPSHOT</version>
    <name>groyyo-user</name>
@@ -19,6 +19,8 @@
       <swagger2.version>2.9.2</swagger2.version>
       <docker.image.prefix>pavankumar1597.azurecr.io</docker.image.prefix>
       <jib-maven-plugin.version>2.5.2</jib-maven-plugin.version>
+      <maven.compiler.source>11</maven.compiler.source>
+      <maven.compiler.target>11</maven.compiler.target>
    </properties>
 
    <dependencies>
@@ -38,7 +40,10 @@
          <version>42.3.4</version>
          <scope>runtime</scope>
       </dependency>
-
+      <dependency>
+         <groupId>org.springframework.kafka</groupId>
+         <artifactId>spring-kafka</artifactId>
+      </dependency>
       <dependency>
          <groupId>org.springframework.boot</groupId>
          <artifactId>spring-boot-starter-test</artifactId>

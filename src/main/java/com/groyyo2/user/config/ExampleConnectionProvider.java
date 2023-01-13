@@ -1,4 +1,4 @@
-package com.groyyo.user.config;
+package com.groyyo2.user.config;
 
 import java.sql.Connection;
 import java.sql.SQLException;
