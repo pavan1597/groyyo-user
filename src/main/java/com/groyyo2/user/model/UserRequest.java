@@ -1,12 +1,12 @@
 package com.groyyo2.user.model;
 
-import lombok.AllArgsConstructor;
-import lombok.Getter;
-import lombok.NoArgsConstructor;
+import lombok.*;
 
 @NoArgsConstructor
-@Getter
 @AllArgsConstructor
+@Builder
+@Setter
+@Getter
 public class UserRequest {
     private Long id;
     private String emailId;

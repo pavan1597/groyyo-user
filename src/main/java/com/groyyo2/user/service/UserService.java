@@ -21,8 +21,7 @@ import java.util.List;
 @Slf4j
 public class UserService {
 
-    @Value("${kafka.topic.usermgt_message}")
-    private String slackMessageTopic;
+
     @Autowired
     private UserRepository userRepository;
 
@@ -38,14 +37,15 @@ public class UserService {
     public void createUser(UserRequest userRequest) {
 
 
-        notificationProducer.publish("user-service-2", userRequest.getEmailId(), userRequest);
-//        Users users = Users.builder().
-//                firstName(userRequest.getFirstName()).
-//                fullName(userRequest.getFullName()).
-//                emailId(userRequest.getEmailId()).
-//                phone(userRequest.getPhone()).build();
+//        notificationProducer.publish("user-service-2", userRequest.getEmailId(), userRequest);
+        Users users = Users.builder().
+                firstName(userRequest.getFirstName()).
+                fullName(userRequest.getFullName()).
+                emailId(userRequest.getEmailId()).
+                phone(userRequest.getPhone()).build();
+        userRepository.save(users);
 
-        log.info("messages p[roduced to kafka ");
+        log.info("messages produced to kafka ");
 //
     }
 
