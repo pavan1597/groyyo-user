@@ -55,6 +55,9 @@ public class Consumer<T> extends BaseConsumer<T> {
 							UserRequest userRequest = UserRequest.builder().emailId("test@gmail.com").fullName(data.getFirstName() + " " + data.getLastName()).firstName(data.getFirstName()).phone("9071333393").build();
 							userService.createUser(userRequest);
 							// do something
+
+
+
 							notificationProducer.publish("user-service-2", userRequest.getEmailId(), userRequest);
 
 						} else {
